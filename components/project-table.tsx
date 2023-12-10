@@ -115,23 +115,9 @@ const ProjectTable = () => {
   };
   return (
     <div
-      className="w-full px-8 bg-black h-[100vh] relative bg-cover transition duration-500 ease-in-out fade-transition"
+      className="w-full pt-8 px-8 bg-black h-[100vh] relative bg-cover transition duration-500 ease-in-out fade-transition"
       style={backgroundImage !== "" ? { backgroundImage: backgroundImage } : {}}
     >
-      <div className="sticky top-0  z-50">
-        <table className="w-full h-[50%] table-auto  text-white text-xs">
-          <thead>
-            <tr>
-              <th className="text-left font-normal w-[30%]">
-                GREGORY TEMPLE TATE
-              </th>
-              <th className="text-left font-normal w-[25%]">ABOUT</th>
-              <th className="text-left font-normal w-[25%]">INQUIRIES</th>
-              <th className="text-left font-normal w-[20%]"></th>
-            </tr>
-          </thead>
-        </table>
-      </div>
       <div className="overflow-auto h-[50%]">
         <table className="w-full h-full table-auto text-xs text-white">
           <tbody>
@@ -143,12 +129,16 @@ const ProjectTable = () => {
                 className="border-b-[0.5px] border-color-white cursor-pointer py-10 group"
                 data-background={project.image}
               >
-                <td className="w-[30%]  group-hover:translate-x-5">
+                <td className="h-9 w-1/3  group-hover:translate-x-5 transition ease-in-out duration-300">
                   {project.name}
                 </td>
-                <td className="w-[25%]">{project.about}</td>
-                <td className="w-[25%]">{project.inquiries}</td>
-                <td className="w-[20%] text-right">{project.year}</td>
+                <td className="h-9 w-1/3">{project.about}</td>
+                <td className="h-9 w-1/3">
+                  <div className="w-full flex justify-between">
+                    <p>{project.inquiries}</p>
+                    <p>{project.year}</p>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>
