@@ -118,7 +118,7 @@ const ProjectTable = () => {
       className="w-full pt-8 px-8 bg-black h-[100vh] relative bg-cover transition duration-500 ease-in-out fade-transition"
       style={backgroundImage !== "" ? { backgroundImage: backgroundImage } : {}}
     >
-      <div className="overflow-auto h-[50%]">
+      <div className="h-[50%]">
         <table className="w-full h-full table-auto text-xs text-white">
           <tbody>
             {projects.map((project, index) => (
