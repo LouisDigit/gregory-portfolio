@@ -131,7 +131,7 @@ const ProjectTable = () => {
   };
   return (
     <div
-      className="w-full pt-8 px-8 bg-black h-[100vh] relative bg-cover transition duration-500 ease-in-out fade-transition"
+      className="w-full py-8 px-8 bg-black min-h-[100vh] relative bg-cover transition duration-500 ease-in-out fade-transition"
       style={
         backgroundImage !== ""
           ? { backgroundImage: backgroundImage, backgroundAttachment: "fixed" }
@@ -163,7 +163,7 @@ const ProjectTable = () => {
               </ul>
               <div
                 className={`text-black flex justify-center items-center w-full overflow-hidden  bg-white ${
-                  expandedProject === index ? "h-[200px]" : "h-[0px]"
+                  expandedProject === index ? "h-[100vh]" : "h-[0px]"
                 } transition-all duration-300`}
               >
                 FUTUR CONTENT
