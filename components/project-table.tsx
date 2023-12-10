@@ -115,7 +115,7 @@ const ProjectTable = () => {
   };
   return (
     <div
-      className="w-full px-8 bg-black h-[100vh] relative bg-cover transition duration-500 ease-in-out"
+      className="w-full px-8 bg-black h-[100vh] relative bg-cover transition duration-500 ease-in-out fade-transition"
       style={backgroundImage !== "" ? { backgroundImage: backgroundImage } : {}}
     >
       <div className="sticky top-0  z-50">
@@ -143,7 +143,7 @@ const ProjectTable = () => {
                 className="border-b-[0.5px] border-color-white cursor-pointer py-10 group"
                 data-background={project.image}
               >
-                <td className="w-[30%] transition duration-300 group-hover:translate-x-5">
+                <td className="w-[30%]  group-hover:translate-x-5">
                   {project.name}
                 </td>
                 <td className="w-[25%]">{project.about}</td>
