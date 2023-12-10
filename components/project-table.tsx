@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 const ProjectTable = () => {
   const [backgroundImage, setBackgroundImage] = useState<string>("");
+  const [expandedProject, setExpandedProject] = useState<number>(-1);
 
   const projects = [
     {
@@ -113,36 +114,63 @@ const ProjectTable = () => {
       setBackgroundImage("");
     }
   };
+
+  const handleContent = (indexProject: number) => {
+    if (expandedProject === -1) {
+      setExpandedProject(indexProject);
+    } else if (expandedProject === indexProject) {
+      setExpandedProject(-1);
+    } else {
+      if (indexProject !== -1) {
+        setExpandedProject(-1);
+        setTimeout(() => {
+          setExpandedProject(indexProject);
+        }, 500);
+      }
+    }
+  };
   return (
     <div
       className="w-full pt-8 px-8 bg-black h-[100vh] relative bg-cover transition duration-500 ease-in-out fade-transition"
-      style={backgroundImage !== "" ? { backgroundImage: backgroundImage } : {}}
+      style={
+        backgroundImage !== ""
+          ? { backgroundImage: backgroundImage, backgroundAttachment: "fixed" }
+          : {}
+      }
     >
-      <div className="h-[50%]">
-        <table className="w-full h-full table-auto text-xs text-white">
-          <tbody>
-            {projects.map((project, index) => (
-              <tr
+      <div className="h-[50%] flex flex-col text-white text-xs">
+        <div className="w-full">
+          {projects.map((project, index) => (
+            <div className="flex flex-col w-full">
+              <ul
+                className="w-full flex border-b-[0.5px] border-color-white cursor-pointer items-center group"
                 key={index}
                 onMouseEnter={() => handleHover(project.image)}
                 onMouseLeave={() => handleHover("")}
-                className="border-b-[0.5px] border-color-white cursor-pointer py-10 group"
+                onClick={() => handleContent(index)}
                 data-background={project.image}
               >
-                <td className="h-9 w-1/3  group-hover:translate-x-5 transition ease-in-out duration-300">
+                <li className="h-9 w-1/3 flex items-center  group-hover:translate-x-5 transition ease-in-out duration-300">
                   {project.name}
-                </td>
-                <td className="h-9 w-1/3">{project.about}</td>
-                <td className="h-9 w-1/3">
-                  <div className="w-full flex justify-between">
+                </li>
+                <li className="h-9 w-1/3 flex items-center">{project.about}</li>
+                <li className="h-9 w-1/3 flex items-center">
+                  <div className="w-full flex  justify-between">
                     <p>{project.inquiries}</p>
                     <p>{project.year}</p>
                   </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                </li>
+              </ul>
+              <div
+                className={`text-black flex justify-center items-center w-full overflow-hidden  bg-white ${
+                  expandedProject === index ? "h-[200px]" : "h-[0px]"
+                } transition-all duration-300`}
+              >
+                FUTUR CONTENT
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
