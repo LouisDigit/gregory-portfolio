@@ -141,7 +141,7 @@ const ProjectTable = () => {
       <div className="h-[50%] flex flex-col text-white text-xs">
         <div className="w-full">
           {projects.map((project, index) => (
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col w-full" key={index}>
               <ul
                 className="w-full flex border-b-[0.5px] border-color-white cursor-pointer items-center group"
                 key={index}
